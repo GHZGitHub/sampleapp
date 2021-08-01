@@ -1,0 +1,21 @@
+//
+//  PrefixHeader.pch
+//  sampleapp
+//
+//  Created by 高浩哲 on 2021/7/26.
+//
+
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define kScreenWidth  [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
+#ifdef DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"\n %s:%d   %s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],__LINE__, [[[NSString alloc] initWithData:[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] dataUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding] UTF8String]);
+#else
+#define NSLog(...)
+#endif
+#endif /* PrefixHeader_pch */
+#import "AFNetworking.h"
+#import "MJExtension.h"

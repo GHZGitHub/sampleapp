@@ -6,7 +6,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import "GHZNewsController.h"
+#import "GHZVideoViewController.h"
+#import "GHZReCommendViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -15,26 +17,39 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
+    UITabBarController *tabBarController = [UITabBarController new];
+    
+    //v1新闻
+    UINavigationController *vc1 = [[UINavigationController alloc]initWithRootViewController:[GHZNewsController new]];
+    vc1.view.backgroundColor = [UIColor whiteColor];
+    vc1.tabBarItem.title = @"新闻";
+    vc1.tabBarItem.image = [UIImage systemImageNamed:@"message"];
+    
+    
+    //v2视频
+    GHZVideoViewController *vc2 = [GHZVideoViewController new];
+    
+   
+    
+    ///v3推荐
+    GHZReCommendViewController *vc3 = [GHZReCommendViewController new];
+ 
+    
+    //v44
+    UIViewController *vc4 = [UIViewController new];
+    vc4.view.backgroundColor = [UIColor yellowColor];
+    vc4.tabBarItem.title = @"我的";
+    vc4.tabBarItem.image = [UIImage systemImageNamed:@"person.fill"];
+    
+    [tabBarController setViewControllers:@[vc1,vc2,vc3,vc4]];
+
+    self.window.rootViewController = tabBarController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
-
-#pragma mark - UISceneSession lifecycle
-
-
-- (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
-    // Called when a new scene session is being created.
-    // Use this method to select a configuration to create the new scene with.
-    return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
-}
-
-
-- (void)application:(UIApplication *)application didDiscardSceneSessions:(NSSet<UISceneSession *> *)sceneSessions {
-    // Called when the user discards a scene session.
-    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-}
 
 
 @end
