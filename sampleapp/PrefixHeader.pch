@@ -19,3 +19,5 @@
 #endif /* PrefixHeader_pch */
 #import "AFNetworking.h"
 #import "MJExtension.h"
+#import <SDWebImage/SDWebImage.h>
+

@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ListCellModel.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GHZNewsCell : UITableViewCell

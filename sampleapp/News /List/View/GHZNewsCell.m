@@ -11,7 +11,7 @@
 @property(nonatomic,strong)UILabel *sourceLab;
 @property(nonatomic,strong)UILabel *commentLab;
 @property(nonatomic,strong)UILabel *timelab;
-@property(nonatomic,strong)UIImageView *imgv;
+@property(nonatomic,strong)UIImageView *rightImageView;
 @property(nonatomic,strong)UIButton *deleteBtn;
 @end
 @implementation GHZNewsCell
@@ -65,11 +65,11 @@
         
         //图片
         [self.contentView addSubview:({
-                    self.imgv = [[UIImageView alloc]init];
-            self.imgv.frame = CGRectMake(300, 15, 100, 70);
-            self.imgv.contentMode = UIViewContentModeScaleAspectFit;
+                    self.rightImageView = [[UIImageView alloc]init];
+            self.rightImageView.frame = CGRectMake(300, 15, 100, 70);
+            self.rightImageView.contentMode = UIViewContentModeScaleAspectFit;
             
-            self.imgv;
+            self.rightImageView;
         })];
         
         //删除按钮
@@ -92,6 +92,7 @@
         
 }
 
+//模型数据绑定 重新布局cell
 - (void)layoutCellWithModel:(ListCellModel *)model{
     self.titleLab.text = model.title;
     
@@ -107,10 +108,10 @@
     [self.timelab sizeToFit];
     self.timelab.frame = CGRectMake(self.commentLab.frame.origin.x + self.commentLab.frame.size.width + 15, self.timelab.frame.origin.y , self.timelab.frame.size.width, self.timelab.frame.size.height);
     
-    self.imgv.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.thumbnail_pic_s]]];
-    
-   
-    
+    [self.rightImageView sd_setImageWithURL:[NSURL URLWithString: model.thumbnail_pic_s]];
+//    [self.imgv sd_setImageWithURL:[NSURL URLWithString:model.thumbnail_pic_s] placeholderImage:@"placeholder.png" completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+//        NSLog(@"===");
+//    }];
 }
 
 ////删除按钮
